@@ -1,0 +1,91 @@
+// actually12.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include<iostream>
+#include<iomanip>
+#include<cmath>
+#include<cstdlib>
+#include <string>
+#include <ctime>
+
+using namespace std;
+	double total; //total dollar amount
+int number; //what the spinner generates
+double spins;	// how many spins to do
+double avg;//average dollars
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	time_t seconds;
+	time(&seconds);
+	srand((unsigned int)seconds);
+
+	
+	
+
+	cout << "How many spins would you like to do?"<<endl;
+		cin >> spins;
+		
+	int dollars[1000];
+	int trial[1000];
+	
+	for (int n = 0; n <= (spins-1); n++)
+	{
+		number = rand() % 32 + 1;
+		switch (number)
+		{
+		case 1:{
+			dollars[n] = 100;
+			break; }
+		case 2:
+		case 3: {dollars[n] = 50;
+			break;	}
+		case 4:
+		case 5:
+		case 6: {dollars[n] = 25;
+			break; }
+		case 7:
+		case 8:
+		case 9:
+		case 10: {dollars[n] = 10;
+			break; }
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+		case 15: {dollars[n] = 5;
+			break; }
+		case 16:
+		case 17:
+		case 18:
+		case 19:
+		case 20:
+		case 21:
+		case 22: {dollars[n] = 1;
+			break; }
+		case 23:
+		case 24:
+		case 25:
+		case 26:
+		case 27:
+		case 28:
+		case 29:
+		case 30:
+		case 31:
+		case 32: {dollars[n] = 0;
+			break; }
+		default:{cout << "ERROR"; }
+		}
+	}
+	for (int n = 0; n <= (spins - 1); n++)
+	{
+		total += dollars[n];
+	}
+	cout << setiosflags(ios::showpoint | ios::right | ios::fixed) << setprecision(2);
+	avg = total / spins;
+	cout << "Average was " << avg << endl;
+	system("pause");
+	return 0;
+}
+
